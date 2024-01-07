@@ -2,7 +2,8 @@
 const data = JSON.parse(sketchData);
 
 function setup() {
-  createCanvas(400, 400);
+  const canvas = createCanvas(400, 400);
+  canvas.parent('canvas-container');
   
   console.log(`Project '${data.projectName}' loaded successfully. (~:`);
 }

@@ -9,13 +9,15 @@
 </head>
 
 <body>
+    <h1>Hello!</h1>
+    <!-- The following div will contain your sketch. Move this div to position it. -->
+    <div id="canvas-container"></div>
+
     <p>
-        <%= package.name %>
+        That ^ is <%= package.name %>
     </p>
-    <p>
-        <%= toRender.testText %>
-    </p>
-    <!-- CDN for p5js and p5js sketch reference. -->
+
+    <!-- CDN for p5js -->
     <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.js"></script>
     <!-- This is where we will pass data into the sketch. -->
     <script>

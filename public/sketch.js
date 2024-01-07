@@ -1,9 +1,10 @@
 // Get 'toRender' data from server
 const data = JSON.parse(sketchData);
+const parentElement = 'canvas-container';
 
 function setup() {
   const canvas = createCanvas(400, 400);
-  canvas.parent('canvas-container');
+  canvas.parent(parentElement);
   
   console.log(`Project '${data.projectName}' loaded successfully. (~:`);
 }

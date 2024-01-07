@@ -1,5 +1,7 @@
 A (mostly) blank node/express/ejs project that renders a simple page containing a p5js sketch.
 
+This project is currently maintained only for my own use. I will update with features I find useful.
+
 Installation is easy. Navigate to your desired directory, then:
 1. Clone
 ```

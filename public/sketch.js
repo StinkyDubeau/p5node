@@ -63,23 +63,18 @@ function mouseInput() {
     } else if (player.yPos < 0) {
       player.yVel = player.shove * 50;
     }
-
-    // if (player.xPos > width || player.xPos < 0) {
-    //   player.xPos 
-    //   player.xVel = player.xVel * -1;
-    // } else if (player.yPos > width || player.yPos < 0) {
-    //   player.yVel = player.yVel * -1;
-    // }
     // Move the player based on its velocity
     player.xPos += player.xVel;
     player.yPos += player.yVel;
     // Slow down the player by the dampening factor
     player.xVel = player.xVel * player.dampening * 0.1;
     player.yVel = player.yVel * player.dampening * 0.1;
-
-
   } else {
+    // Simple non-kinetic tracking
     player.xPos = mouseX;
     player.yPos = mouseY;
   }
+  // 'Floor' The coordinates to make the numbers nicely round :~p
+  player.xPos = Math.floor(player.xPos);
+  player.yPos = Math.floor(player.yPos);
 }

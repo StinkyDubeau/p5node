@@ -2,17 +2,22 @@
 const data = JSON.parse(sketchData);
 const parentElement = 'canvas-container';
 
+let physicalTracking = false;
+const height = 400;
+const width = 400;
+
 let player = {
   xVel: 0,
   yVel: 0,
   xPos: 40,
   yPos: 40,
   dampening: 5,
+  shove: 1,
   size: 15,
 }
 
 function setup() {
-  const canvas = createCanvas(400, 400);
+  const canvas = createCanvas(height, width);
   canvas.parent(parentElement);
   rectMode(CENTER);
 
@@ -22,13 +27,59 @@ function setup() {
 function draw() {
   background(220);
   text(data.testText, 5, 20);
+  text(`Kinetic tracking: ${physicalTracking} (Click to toggle.)`, 15, 35);
+  text(`Pos: X ${player.xPos} | Y ${player.yPos}`, 15, 50);
+  text(`Vel: X ${player.xVel} | Y ${player.yVel}`, 15, 65);
   rect(player.xPos, player.yPos, player.size, player.size);
 
   mouseInput();
 }
 
-function mouseInput() {
-  player.xVel = movedX;
-  player.yVel = movedY;
+function mouseClicked() {
+  if (physicalTracking) {
+    physicalTracking = false;
+  } else {
+    requestPointerLock()
+    physicalTracking = true;
+    noCursor();
+  }
+}
 
+function mouseInput() {
+  if (physicalTracking) {
+    // Get mouse input
+    player.xVel += movedX;
+    player.yVel += movedY;
+    // check for bounce
+    if (player.xPos > width) {
+      player.xVel = -player.shove * 50;
+      player.yVel = player.shove * player.yVel * 5;
+
+    } else if (player.xPos < 0) {
+      player.xVel = player.shove * 50;
+    }
+    if (player.yPos > height) {
+      player.yVel = -player.shove * 50;
+    } else if (player.yPos < 0) {
+      player.yVel = player.shove * 50;
+    }
+
+    // if (player.xPos > width || player.xPos < 0) {
+    //   player.xPos 
+    //   player.xVel = player.xVel * -1;
+    // } else if (player.yPos > width || player.yPos < 0) {
+    //   player.yVel = player.yVel * -1;
+    // }
+    // Move the player based on its velocity
+    player.xPos += player.xVel;
+    player.yPos += player.yVel;
+    // Slow down the player by the dampening factor
+    player.xVel = player.xVel * player.dampening * 0.1;
+    player.yVel = player.yVel * player.dampening * 0.1;
+
+
+  } else {
+    player.xPos = mouseX;
+    player.yPos = mouseY;
+  }
 }

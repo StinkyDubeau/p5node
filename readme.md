@@ -1,8 +1,8 @@
 
-<h1>p5node</h1>
+# p5node
 A (mostly) blank node/express/ejs project that renders a simple page containing a p5js sketch. This project is maintained only for my own use. I will update it with features I find useful.
 
-<h2>Installation</h2>
+## Installation
 1. Clone
 ```
 git clone https://github.com/StinkyDubeau/p5node.git

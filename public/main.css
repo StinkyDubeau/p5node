@@ -2,3 +2,14 @@ body{
     font-family: sans-serif;
     background: salmon;
 }
+
+#canvas-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000; /* Set the background color to your preference */
+    z-index: -1; /* Adjust the z-index as needed */
+  }
+  

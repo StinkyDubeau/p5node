@@ -3,8 +3,8 @@ const data = JSON.parse(sketchData);
 const parentElement = 'canvas-container';
 
 let physicalTracking = false;
-const height = 400;
-const width = 400;
+let height = 400;
+let width = 400;
 
 let player = {
   xVel: 0,
@@ -13,11 +13,13 @@ let player = {
   yPos: 40,
   dampening: 5,
   shove: 1,
-  size: 15,
+  size: 10,
 }
 
 function setup() {
-  const canvas = createCanvas(height, width);
+  width = windowWidth;
+  height = windowHeight;
+  const canvas = createCanvas(width, height);
   canvas.parent(parentElement);
   rectMode(CENTER);
 
@@ -51,16 +53,16 @@ function mouseInput() {
     player.xVel += movedX;
     player.yVel += movedY;
     // check for bounce
-    if (player.xPos > width) {
+    if (player.xPos + (player.size / 2) > width) {
       player.xVel = -player.shove * 50;
       player.yVel = player.shove * player.yVel * 5;
 
-    } else if (player.xPos < 0) {
+    } else if (player.xPos < (player.size / 2)) {
       player.xVel = player.shove * 50;
     }
-    if (player.yPos > height) {
+    if (player.yPos + (player.size / 2) > height) {
       player.yVel = -player.shove * 50;
-    } else if (player.yPos < 0) {
+    } else if (player.yPos < (player.size / 2)) {
       player.yVel = player.shove * 50;
     }
 

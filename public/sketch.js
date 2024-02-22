@@ -63,18 +63,17 @@ function mouseInput() {
     } else if (player.yPos < 0) {
       player.yVel = player.shove * 50;
     }
+
     // Move the player based on its velocity
     player.xPos += player.xVel;
     player.yPos += player.yVel;
+
     // Slow down the player by the dampening factor
-    player.xVel = player.xVel * player.dampening * 0.1;
-    player.yVel = player.yVel * player.dampening * 0.1;
+    player.xVel -= player.xVel / player.dampening;
+    player.yVel -= player.yVel / player.dampening;
   } else {
     // Simple non-kinetic tracking
     player.xPos = mouseX;
     player.yPos = mouseY;
   }
-  // 'Floor' The coordinates to make the numbers nicely round :~p
-  player.xPos = Math.floor(player.xPos);
-  player.yPos = Math.floor(player.yPos);
 }

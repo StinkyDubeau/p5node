@@ -8,7 +8,7 @@ A super simple express/ejs project that renders a p5js sketch in your page.
 
 🖥️ Render a sketch as the background of your page
 
-📦 Automatically scales to a `<div>`
+📦 Automatically scale your sketch to a `<div>`
 
 💾 Pass data from your server to your sketch
 

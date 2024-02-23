@@ -7,14 +7,14 @@ let height = 400;
 let width = 400;
 let debugText = false;
 // For moving the DVD icon
-let xVel = 10;
-let yVel = 10;
+let xVel = 5;
+let yVel = 5;
 
 let player = {
   xVel: 0,
   yVel: 0,
-  xPos: 40,
-  yPos: 40,
+  xPos: 110,
+  yPos: 65,
   dampening: 5,
   shove: 1,
   xSize: 220,
@@ -26,7 +26,7 @@ function randomTint() {
 }
 
 function setup() {
-  img = loadImage('dvd-hi-res.png');
+  img = loadImage('dvd.png');
 
   width = windowWidth;
   height = windowHeight;
@@ -40,7 +40,7 @@ function setup() {
 }
 
 function draw() {
-  background(220);
+  background(15);
   if (debugText) {
     text(data.testText, 5, 20);
     text(`Kinetic tracking: ${physicalTracking} (Click to toggle.)`, 15, 35);
@@ -52,11 +52,19 @@ function draw() {
   mouseInput();
 }
 
+function windowResized() {
+  width = windowWidth;
+  height = windowHeight;
+  resizeCanvas(windowWidth, windowHeight);
+}
+
 // Toggle control
 function keyPressed() {
   if (physicalTracking) {
     physicalTracking = false;
     exitPointerLock();
+    player.xVel = 0;
+    player.yVel = 0;
   } else {
     requestPointerLock();
     physicalTracking = true;
@@ -71,20 +79,16 @@ function moveManually() {
   if (player.xPos + (player.xSize / 2) > width) {
     player.xVel = -player.shove * 50;
     randomTint();
-
   } else if (player.xPos < (player.xSize / 2)) {
     player.xVel = player.shove * 50;
     randomTint();
-
   }
   if (player.yPos + (player.ySize / 2) > height) {
     player.yVel = -player.shove * 50;
     randomTint();
-
   } else if (player.yPos < (player.ySize / 2)) {
     player.yVel = player.shove * 50;
     randomTint();
-
   }
 
   // Move the player based on its velocity
@@ -100,8 +104,17 @@ function moveAutomatically() {
   // DVD behaviour
   player.xPos += player.xVel;
   player.yPos += player.yVel;
-  player.xPos = mouseX;
-  player.yPos = mouseY;
+  player.xPos += xVel;
+  player.yPos += yVel;
+
+  if (player.yPos > height - (player.ySize / 2) || player.yPos < (player.ySize / 2)) {
+    yVel = yVel * -1;
+    randomTint();
+  }
+  if (player.xPos > width - (player.xSize / 2) || player.xPos < (player.xSize / 2)) {
+    xVel = xVel * -1;
+    randomTint();
+  }
 }
 
 function mouseInput() {

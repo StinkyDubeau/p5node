@@ -16,7 +16,7 @@ A super simple express/ejs project that renders a p5js sketch in your page.
 
 How do I move my sketch?
 
-> Your sketch will fit itself to any element with the element "canvas-container". If you can scale a `<div>`, you can scale your sketch!
+> Your sketch will fit itself to any element with the id "canvas-container". If you can scale a `<div>`, you can scale your sketch!
 
 Can I embed multiple sketches?
 

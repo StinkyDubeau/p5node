@@ -1,4 +1,36 @@
-body{
-    font-family: sans-serif;
-    background: salmon;
+body {
+    margin-top: 30vh;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    color: #ddd; 
+    text-shadow: #000 0px 3px 4px;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 300;
+    margin-bottom: 0;
+}
+
+h2 {
+    margin-top: 100px;
+    font-weight: 400;
+}
+
+a {
+    font-size: 0.9rem;
+    margin-top: 0;
+    color: #ccc;
+}
+
+#canvas-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    /* Set the background color to your preference */
+    z-index: -1;
+    /* Adjust the z-index as needed */
 }

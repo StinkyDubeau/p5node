@@ -41,11 +41,11 @@ npm i
 3. Run using node
 
 ```
-node .
+npm start
 ```
 4. Open your app
 
-The app is available at localhost:3000 by default.
+The app is available at localhost:3000 by default. You'll find a DVD demo running, with HTML elements overlayed.
 
 ---
 

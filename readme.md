@@ -1,6 +1,6 @@
 # p5node
 
-A super simple express/ejs project that renders a p5js sketch in your page.
+A super simple express & ejs project that renders a p5js sketch in your page.
 
 ## Features
 
@@ -49,4 +49,4 @@ The app is available at localhost:3000 by default. You'll find a DVD demo runnin
 
 ---
 
-This project is maintained for my own use. I will update with features I find useful.
+This project is maintained for my own use. I will update it with features I find useful.
